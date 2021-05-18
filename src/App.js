@@ -21,12 +21,16 @@ function App() {
 	}
   }
 
-  const removeTask = () => {
-    
+  const deleteTask = (id) => {
+	setTasks([...tasks.filter((task) => task.id !== id)])
   }
 
-  const toggleTask = () => {
-    
+  const toggleTask = (id) => {
+    setTasks([
+		...tasks.map((task) => 
+			task.id === id ? {...task, isComplete: !task.isComplete} : {...task}
+		)
+	])
   }
 
   return (
@@ -38,9 +42,9 @@ function App() {
 			return (
 				<ListItem
 					task={task}
-					key={tasks.id}
+					key={task.id}
 					toggleTask={toggleTask}
-					removeTask={removeTask}
+					deleteTask={deleteTask}
 				/>
 			)
 		})}

@@ -17,25 +17,29 @@ code {
   text-align: center;
 }
 
-.App .item-todo {
-  padding: 14px;
+.App .item-task {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
   width: 250px;
+  font-weight: 500;
   margin: 0 auto;
   text-align: left;
   margin-top: 15px;
   background: linear-gradient(
     90deg,
-    rgba(93, 12, 255, 1) 0%,
-    rgba(155, 0, 250, 1) 100%
+    rgb(209, 190, 248) 0%,
+    rgb(107, 109, 252) 100%
   );
-  color: #fff;
+  color: rgb(0, 0, 0);
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
 
-.App .item-todo .item-text {
-  display: inline-block;
+.App .item-task .item-text {
+  display: flex;
   cursor: pointer;
 }
 
@@ -55,17 +59,16 @@ code {
   outline: none;
   background: linear-gradient(
     90deg,
-    rgba(93, 12, 255, 1) 0%,
-    rgba(155, 0, 250, 1) 100%
+    rgb(209, 190, 248) 0%,
+    rgb(107, 109, 252) 100%
   );
-  color: #fff;
+  color: rgb(0, 0, 0);
   text-transform: capitalize;
 }
 
-.App .item-todo .item-delete {
-  display: inline-block;
-  cursor: pointer;
-  float: right;
+.App .item-task .item-delete {
+  display: flex; 
+  cursor: pointer; 
   font-size: 22px;
   position: relative;
   left: -4px;
@@ -74,4 +77,6 @@ code {
 
 .strike {
   text-decoration: line-through;
+  text-decoration-color: rgb(164, 255, 220);
+  
 }
