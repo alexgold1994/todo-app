@@ -1,25 +1,54 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import ListForm from './components/ListForm'
+import ListItem from './components/ListItem'
+
+
+
+
 
 function App() {
+
+  const [tasks, setTasks] = useState([])
+
+  const addTask = (dataInput) => {
+	if (dataInput) {
+		const newTask = {
+			id: Math.random().toString(20).substr(3,12),
+			data: dataInput,
+			isComplete: false
+		}
+		setTasks([...tasks, newTask])
+	}
+  }
+
+  const removeTask = () => {
+    
+  }
+
+  const toggleTask = () => {
+    
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+		<h1>Task list: {tasks.length}</h1>	
+		<ListForm addTask={addTask}/>
+
+		{tasks.map((task) => {
+			return (
+				<ListItem
+					task={task}
+					key={tasks.id}
+					toggleTask={toggleTask}
+					removeTask={removeTask}
+				/>
+			)
+		})}
+
     </div>
   );
 }
 
 export default App;
+
+
