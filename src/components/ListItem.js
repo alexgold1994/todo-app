@@ -1,16 +1,44 @@
 import React from 'react'
+import DeleteIcon from '@material-ui/icons/Delete';
+import styled from 'styled-components';
+
+const ListItemWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    width: 250px;
+    font-weight: 500;
+    margin: 0 auto;
+    text-align: left;
+    margin-top: 15px;
+    background: linear-gradient(
+    90deg,
+    rgb(209, 190, 248) 0%,
+    rgb(107, 109, 252) 100%
+    );
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+`
+
+const ListItemText = styled.div`
+    display: flex;
+    cursor: pointer;
+    font-size: 18px;
+    
+`
 
 function ListItem({ task, toggleTask, deleteTask }) {
     return (
-        <div key={task.id} className="item-task" >
-            <div className={task.isComplete ? "item-text strike" : "item-text"}
-                onClick={() => toggleTask(task.id)}
-            >
+        <ListItemWrapper key={task.id}>
+            <ListItemText className={task.isComplete ? "item-text strike" : "item-text"}
+                onClick={() => toggleTask(task.id)}>
                  {task.data}
-             </div>
-
-            <div className="item-delete" onClick={() => deleteTask(task.id)}> X </div>
-        </div>
+             </ListItemText>
+            <div className="item-delete" onClick={() => deleteTask(task.id)}> <DeleteIcon />  </div>
+        </ListItemWrapper>
     )
 }
 

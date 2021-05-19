@@ -1,8 +1,25 @@
 import React, {useState} from 'react';
 import ListForm from './components/ListForm'
 import ListTasks from './components/ListTasks'
+import styled, {createGlobalStyle} from 'styled-components';
 
+const Title = styled.h1`
+  font-size: 2em;
+  text-align: center;
+  color: palevioletred;
+`;
 
+const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  }
+`;
 
 
 function App() {
@@ -32,19 +49,17 @@ function App() {
 	])
   }
 
-
-
   return (
-    <div className="App">
-		<h1>Task list: {tasks.length}</h1>	
+	  <>
+	  	<GlobalStyle/>	      
+		<Title>Task list: {tasks.length}</Title>	
 		<ListForm addTask={addTask}/>
 		<ListTasks 
 			deleteTask={deleteTask} 
 			tasks={tasks} 
-			toggleTask={toggleTask}/>
+			toggleTask={toggleTask}/>    
+	  </>
 
-
-    </div>
   );
 }
 
