@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import ListForm from './components/ListForm'
-import ListItem from './components/ListItem'
-
+import ListTasks from './components/ListTasks'
 
 
 
@@ -33,21 +32,17 @@ function App() {
 	])
   }
 
+
+
   return (
     <div className="App">
 		<h1>Task list: {tasks.length}</h1>	
 		<ListForm addTask={addTask}/>
+		<ListTasks 
+			deleteTask={deleteTask} 
+			tasks={tasks} 
+			toggleTask={toggleTask}/>
 
-		{tasks.map((task) => {
-			return (
-				<ListItem
-					task={task}
-					key={task.id}
-					toggleTask={toggleTask}
-					deleteTask={deleteTask}
-				/>
-			)
-		})}
 
     </div>
   );
