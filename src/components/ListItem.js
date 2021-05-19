@@ -26,14 +26,16 @@ const ListItemWrapper = styled.div`
 const ListItemText = styled.div`
     display: flex;
     cursor: pointer;
-    font-size: 18px;
-    
+    font-size: 18px;    
+    text-decoration: ${props => props.decoration? 'line-through' : 'none'};
+    text-decoration-color: #21ff21;
+    text-decoration-style: wavy
 `
 
 function ListItem({ task, toggleTask, deleteTask }) {
     return (
         <ListItemWrapper key={task.id}>
-            <ListItemText className={task.isComplete ? "item-text strike" : "item-text"}
+            <ListItemText decoration={task.isComplete}
                 onClick={() => toggleTask(task.id)}>
                  {task.data}
              </ListItemText>
