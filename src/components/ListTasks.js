@@ -1,7 +1,7 @@
 import React from 'react'
 import ListItem from './ListItem'
 
-function ListTasks({tasks, toggleTask, deleteTask}) {
+function ListTasks({tasks}) {
     return (
 		<div>
 			{tasks.map((task) => {
@@ -9,8 +9,7 @@ function ListTasks({tasks, toggleTask, deleteTask}) {
 					<ListItem
 						task={task}
 						key={task.id}
-						toggleTask={toggleTask}
-						deleteTask={deleteTask}
+						
 					/>
 				)
 			})}

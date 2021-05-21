@@ -1,5 +1,6 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import styled from 'styled-components';
+import {Context} from '../context/context'
 
 const Btn = styled.button`
     padding: 16px 7px;
@@ -31,15 +32,17 @@ const Form = styled.form`
     text-align: center;
 `
 
-function ListForm({ addTask }) {
+function ListForm() {
 
-    const [dataInput, setDataInput] = useState('')   
+    const [dataInput, setDataInput] = useState('') 
+    const {addTask} = useContext(Context)  
     
     const handleSubmit = (e) => {
         e.preventDefault()
         addTask(dataInput)
         setDataInput("")
     }
+    
 
     const handleChange = (e) => {
         setDataInput(e.currentTarget.value)

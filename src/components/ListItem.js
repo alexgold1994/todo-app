@@ -1,6 +1,7 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import DeleteIcon from '@material-ui/icons/Delete';
 import styled from 'styled-components';
+import {Context} from '../context/context'
 
 const ListItemWrapper = styled.div`
     display: flex;
@@ -31,7 +32,10 @@ const ListItemText = styled.div`
     text-decoration-style: wavy
 `
 
-function ListItem({ task, toggleTask, deleteTask }) {
+function ListItem({ task }) {
+
+    const {toggleTask, deleteTask} = useContext(Context)
+
     return (
         <ListItemWrapper key={task.id}>
             <ListItemText decoration={task.isComplete}

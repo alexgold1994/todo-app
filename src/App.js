@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import ListForm from './components/ListForm'
 import ListTasks from './components/ListTasks'
 import styled, {createGlobalStyle} from 'styled-components';
+import {Context} from './context/context'
 
 const Title = styled.h1`
   font-size: 2em;
@@ -51,14 +52,17 @@ function App() {
 
   return (
 	  <>
-	  	<GlobalStyle/>	      
-		<Title>Task list: {tasks.length}</Title>	
-		<ListForm addTask={addTask}/>
-		<ListTasks 
-			deleteTask={deleteTask} 
-			tasks={tasks} 
-			toggleTask={toggleTask}/>    
-	  </>
+	  	<GlobalStyle/>	  
+        <Context.Provider value={{
+          toggleTask, deleteTask, addTask, tasks
+        }}>
+          <Title>Task list: {tasks.length}</Title>	
+          <ListForm/>
+          <ListTasks 
+            tasks={tasks} 
+            />              
+        </Context.Provider>
+    </>
 
   );
 }
