@@ -7,6 +7,7 @@ const Btn = styled.button`
     border-radius: 0 4px 4px 0;
     cursor: pointer;
     outline: none;
+    border: 1px solid #5d0cff;
     background: linear-gradient(
     90deg,
     rgb(209, 190, 248) 0%,
@@ -18,9 +19,10 @@ const Btn = styled.button`
 `
 
 const Input = styled.input`
-    padding: 14px 32px 14px 16px;
-    border-radius: 4px 0 0 4px;
+    padding: 15px 30px 15px 15px;
+    border-radius: 5px 0 0 5px;
     border: 2px solid #5d0cff;
+    width: 500px;
     outline: none;
     background: transparent;
 `

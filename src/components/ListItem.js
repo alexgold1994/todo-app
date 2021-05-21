@@ -7,10 +7,9 @@ const ListItemWrapper = styled.div`
     align-items: center;
     justify-content: space-between;
     padding: 16px;
-    width: 250px;
+    width: 550px;
     font-weight: 500;
-    margin: 0 auto;
-    text-align: left;
+    margin: 0 auto;    
     margin-top: 15px;
     background: linear-gradient(
     90deg,
