@@ -35,14 +35,15 @@ const ListItemText = styled.div`
 function ListItem({ task }) {
 
     const {toggleTask, deleteTask} = useContext(Context)
-
+        const {id, isComplete} = task
     return (
-        <ListItemWrapper key={task.id}>
-            <ListItemText decoration={task.isComplete}
-                onClick={() => toggleTask(task.id)}>
+        
+        <ListItemWrapper key={id}>
+            <ListItemText decoration={isComplete}
+                onClick={() => toggleTask(id)}>
                  {task.data}
              </ListItemText>
-            <div className="item-delete" onClick={() => deleteTask(task.id)}> <DeleteIcon />  </div>
+            <div className="item-delete" onClick={() => deleteTask(id)}> <DeleteIcon />  </div>
         </ListItemWrapper>
     )
 }

@@ -26,35 +26,48 @@ const GlobalStyle = createGlobalStyle`
 function App() {
 
   const [tasks, setTasks] = useState([])
+  const [dataInput, setDataInput] = useState('') 
 
   const addTask = (dataInput) => {
-	if (dataInput) {
-		const newTask = {
-			id: Math.random().toString(20).substr(3,12),
-			data: dataInput,
-			isComplete: false
-		}
-		setTasks([...tasks, newTask])
-	}
+    if (dataInput) {
+      const newTask = {
+        id: Math.random().toString(20).substr(3,12),
+        data: dataInput,
+        isComplete: false
+      }
+      setTasks([...tasks, newTask])
+    }
   }
 
   const deleteTask = (id) => {
-	setTasks([...tasks.filter((task) => task.id !== id)])
-  }
+    setTasks([...tasks.filter((task) => task.id !== id)])
+    }
 
   const toggleTask = (id) => {
-    setTasks([
-		...tasks.map((task) => 
-			task.id === id ? {...task, isComplete: !task.isComplete} : {...task}
-		)
-	])
+      setTasks([
+      ...tasks.map((task) => 
+        task.id === id ? {...task, isComplete: !task.isComplete} : {...task}
+      )
+    ])
   }
+
+  const handleSubmit = (e) => {
+      e.preventDefault()
+      addTask(dataInput)
+      setDataInput("")
+  }
+
+
+  const handleChange = (e) => {
+      setDataInput(e.currentTarget.value)
+  }
+
 
   return (
 	  <>
 	  	<GlobalStyle/>	  
         <Context.Provider value={{
-          toggleTask, deleteTask, addTask, tasks
+          toggleTask, deleteTask, addTask, handleSubmit, handleChange, dataInput
         }}>
           <Title>Task list: {tasks.length}</Title>	
           <ListForm/>
