@@ -1,7 +1,11 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import ListItem from './ListItem'
+import {Context} from '../context/context'
 
-function ListTasks({tasks}) {
+function ListTasks() {
+
+    const {tasks} = useContext(Context)
+
     return (
 		<div>
 			{tasks.map((task) => {

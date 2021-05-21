@@ -67,13 +67,11 @@ function App() {
 	  <>
 	  	<GlobalStyle/>	  
         <Context.Provider value={{
-          toggleTask, deleteTask, addTask, handleSubmit, handleChange, dataInput
+          toggleTask, deleteTask, addTask, handleSubmit, handleChange, dataInput, tasks
         }}>
           <Title>Task list: {tasks.length}</Title>	
           <ListForm/>
-          <ListTasks 
-            tasks={tasks} 
-            />              
+          <ListTasks/>              
         </Context.Provider>
     </>
 
