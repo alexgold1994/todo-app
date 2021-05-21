@@ -33,23 +33,9 @@ const Form = styled.form`
 `
 
 function ListForm() {
-
-    const [dataInput, setDataInput] = useState('') 
-    const {addTask} = useContext(Context)  
     
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        addTask(dataInput)
-        setDataInput("")
-    }
+    const {handleSubmit, dataInput, handleChange} = useContext(Context)  
     
-
-    const handleChange = (e) => {
-        setDataInput(e.currentTarget.value)
-    }
-    
-
-
     return (
         <Form onSubmit={handleSubmit}>
             <Input 
