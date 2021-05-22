@@ -34,13 +34,50 @@ const Form = styled.form`
 
 function ListForm() {
     
-    const {handleSubmit, dataInput, handleChange} = useContext(Context)  
+    const {state, dispatch} = useContext(Context)  
+
+    const handleChange = (e) => {
+        dispatch({
+          type: 'CHANGE_INPUT',
+          payload: e.currentTarget.value
+        })      
+    } 
+
+    const addTask = (state) => {
+        if (state.dataInput) {
+          dispatch({
+            type: 'ADD_TASK',
+            payload:   {
+                id: Math.random().toString(20).substr(3,12),
+                data: state.dataInput,
+                isComplete: false
+            }
     
+          })  
+        }
+      }
+
+    const ResetInput = (e) => {
+        dispatch({
+            type: 'RESET_INPUT',
+            payload: ''
+        })
+    }
+    
+
+    const handleSubmit = (e) => {
+        console.log(state)
+        e.preventDefault()
+        addTask(state)
+        ResetInput()
+    }
+
+
     return (
         <Form onSubmit={handleSubmit}>
             <Input 
                 type="text"
-                value={dataInput}
+                value={state.dataInput}
                 onChange={handleChange}
                 placeholder="Enter value"
             />

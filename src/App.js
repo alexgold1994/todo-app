@@ -1,8 +1,10 @@
-import React, {useState} from 'react';
+import React, {useReducer} from 'react';
 import ListForm from './components/ListForm'
 import ListTasks from './components/ListTasks'
 import styled, {createGlobalStyle} from 'styled-components';
 import {Context} from './context/context'
+import reducer from './reducers/reducer'
+
 
 const Title = styled.h1`
   font-size: 2em;
@@ -21,55 +23,19 @@ const GlobalStyle = createGlobalStyle`
   -moz-osx-font-smoothing: grayscale;
   }
 `;
+ 
 
 
 function App() {
 
-  const [tasks, setTasks] = useState([])
-  const [dataInput, setDataInput] = useState('') 
-
-  const addTask = (dataInput) => {
-    if (dataInput) {
-      const newTask = {
-        id: Math.random().toString(20).substr(3,12),
-        data: dataInput,
-        isComplete: false
-      }
-      setTasks([...tasks, newTask])
-    }
-  }
-
-  const deleteTask = (id) => {
-    setTasks([...tasks.filter((task) => task.id !== id)])
-    }
-
-  const toggleTask = (id) => {
-      setTasks([
-      ...tasks.map((task) => 
-        task.id === id ? {...task, isComplete: !task.isComplete} : {...task}
-      )
-    ])
-  }
-
-  const handleSubmit = (e) => {
-      e.preventDefault()
-      addTask(dataInput)
-      setDataInput("")
-  }
-
-
-  const handleChange = (e) => {
-      setDataInput(e.currentTarget.value)
-  }
+  const [state, dispatch] = useReducer(reducer, { tasks: [], dataInput: '' })
 
 
   return (
 	  <>
 	  	<GlobalStyle/>	  
-        <Context.Provider value={{
-          toggleTask, deleteTask, addTask, handleSubmit, handleChange, dataInput, tasks
-        }}>
-          <Title>Task list: {tasks.length}</Title>	
+        <Context.Provider value={{state, dispatch}}>
+          <Title>Task list: {state.tasks.length}</Title>	
           <ListForm/>
           <ListTasks/>              
         </Context.Provider>

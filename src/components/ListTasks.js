@@ -2,13 +2,16 @@ import React, {useContext} from 'react'
 import ListItem from './ListItem'
 import {Context} from '../context/context'
 
+
 function ListTasks() {
 
-    const {tasks} = useContext(Context)
-
+    const {state} = useContext(Context)
+	console.log(state)
     return (
+		
 		<div>
-			{tasks.map((task) => {
+			
+			{state.tasks.map((task) => {
 				return (
 					<ListItem
 						task={task}
