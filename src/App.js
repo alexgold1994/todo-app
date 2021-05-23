@@ -1,4 +1,4 @@
-import React, {useReducer} from 'react';
+import React, {useReducer, useEffect} from 'react';
 import ListForm from './components/ListForm'
 import ListTasks from './components/ListTasks'
 import styled, {createGlobalStyle} from 'styled-components';
@@ -27,9 +27,12 @@ const GlobalStyle = createGlobalStyle`
 
 
 function App() {
+  const initialValue = JSON.parse(localStorage.getItem('tasks'))
+  const [state, dispatch] = useReducer(reducer, { tasks: initialValue, dataInput: '' })
 
-  const [state, dispatch] = useReducer(reducer, { tasks: [], dataInput: '' })
-
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(state.tasks))  
+  }, [state.tasks])
 
   return (
 	  <>
