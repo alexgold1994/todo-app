@@ -6,10 +6,10 @@ import {Context} from './context/context'
 import reducer from './reducers/reducer'
 
 
-const Title = styled.h1`
+export const Title = styled.h1`
   font-size: 2em;
   text-align: center;
-  color: palevioletred;
+  color: ${props => props.color || "palevioletred"};
 `;
 
 const GlobalStyle = createGlobalStyle`
