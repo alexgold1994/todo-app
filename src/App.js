@@ -27,7 +27,7 @@ const GlobalStyle = createGlobalStyle`
 
 
 function App() {
-  const initialValue = JSON.parse(localStorage.getItem('tasks'))
+  const initialValue = JSON.parse(localStorage.getItem('tasks')) || []
   const [state, dispatch] = useReducer(reducer, { tasks: initialValue, dataInput: '' })
 
   useEffect(() => {
