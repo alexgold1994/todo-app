@@ -2,7 +2,7 @@ function reducer(state, action) {
     switch (action.type) {
         case 'ADD_TASK':
             return   {
-              tasks: [...state.tasks, action.payload]
+              ...state, tasks: [...state.tasks, action.payload]
             } 
   
         case 'RESET_INPUT': 
@@ -10,13 +10,13 @@ function reducer(state, action) {
             
         case 'DELETE_TASK':
             
-          return { tasks: [...state.tasks.filter((task) => task.id !== action.payload)] }
+          return { ...state, tasks: [...state.tasks.filter((task) => task.id !== action.payload)] }
   
   
         case 'TOGGLE_TASK':
-          return state.tasks.map((task) => 
+          return {...state, tasks: state.tasks.map((task) => 
             task.id === action.payload ? {...task, isComplete: !task.isComplete} : {...task}
-        )
+        )}
   
         case 'CHANGE_INPUT':
   
