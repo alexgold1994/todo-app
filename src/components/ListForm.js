@@ -65,8 +65,7 @@ function ListForm() {
     }
     
 
-    const handleSubmit = (e) => {
-        console.log(state)
+    const handleSubmit = (e) => {        
         e.preventDefault()
         addTask(state)
         ResetInput()

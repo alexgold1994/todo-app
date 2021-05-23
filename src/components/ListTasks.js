@@ -6,7 +6,7 @@ import {Context} from '../context/context'
 function ListTasks() {
 
     const {state} = useContext(Context)
-	console.log(state)
+	
     return (
 		
 		<div>
